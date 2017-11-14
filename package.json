@@ -1,0 +1,39 @@
+{
+  "name": "properly",
+  "version": "0.0.1",
+  "description": "react property logger",
+  "main": "index.js",
+  "author": "vaukalak",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "jest": {
+    "verbose": true,
+    "setupFiles": [
+      "./test/setup.js"
+    ]
+  },
+  "dependencies": {
+    "prop-types": "^15.6.0",
+    "react": "^16.1.0",
+    "react-display-name": "^0.2.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.1.1",
+    "enzyme-adapter-react-16": "^1.0.4",
+    "eslint": "^4.11.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jasmine": "^2.9.1",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "jest": "^21.2.1",
+    "react-dom": "^16.1.1"
+  }
+}
