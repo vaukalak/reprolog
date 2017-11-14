@@ -1,24 +1,29 @@
 {
-  "name": "properly",
-  "version": "0.0.1",
+  "name": "reprolog",
+  "version": "0.0.2",
   "bin": "./lib",
   "description": "react property logger",
-  "keywords": ["react", "logger", "log"],
+  "keywords": [
+    "react",
+    "logger",
+    "log"
+  ],
   "main": "index.js",
   "author": "vaukalak",
   "bugs": {
-    "url" : "https://github.com/vaukalak/properly/issues",
-    "email" : "lahmataja.pa4vara@gmail.com"
+    "url": "https://github.com/vaukalak/reprolog/issues",
+    "email": "lahmataja.pa4vara@gmail.com"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/vaukalak/properly"
+    "type": "git",
+    "url": "https://github.com/vaukalak/reprolog"
   },
   "license": "MIT",
   "scripts": {
     "test": "jest",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "build": "npx babel lib --out-dir dist"
   },
   "jest": {
     "verbose": true,
@@ -32,7 +37,9 @@
     "react-display-name": "^0.2.3"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.2",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "enzyme": "^3.1.1",
@@ -44,6 +51,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
     "jest": "^21.2.1",
+    "npx": "^9.7.1",
     "react-dom": "^16.1.1"
   }
 }

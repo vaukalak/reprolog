@@ -4,8 +4,6 @@ jobs:
     docker:
       - image: circleci/node:7.10
 
-    working_directory: ~/repo
-
     steps:
       - checkout
 
@@ -21,30 +19,33 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: npm test
-      - run: npm run lint
-  deploy:
+      - run: yarn test
+      - run: yarn run lint
+  build:
     docker:
       - image: circleci/node:7.10
 
-    working_directory: ~/repo
-
     steps:
+      - checkout
+
+      - run:
+          name: install dependencies
+          command: 'yarn'
+      - run:
+          name: build module
+          command: yarn run build
       - run:
           name: deploy to npm
           command: |
             echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-            mkdir dist
-            ls
-            cp package.json dist
-            npm publish
+            yarn publish
 
 workflows:
   version: 2
   test_and_deploy:
     jobs:
       - test
-      - deploy:
+      - build:
           requires:
             - test
           filters:
