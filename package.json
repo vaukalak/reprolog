@@ -1,9 +1,19 @@
 {
   "name": "properly",
   "version": "0.0.1",
+  "bin": "./lib",
   "description": "react property logger",
+  "keywords": ["react", "logger", "log"],
   "main": "index.js",
   "author": "vaukalak",
+  "bugs": {
+    "url" : "https://github.com/vaukalak/properly/issues",
+    "email" : "lahmataja.pa4vara@gmail.com"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/vaukalak/properly"
+  },
   "license": "MIT",
   "scripts": {
     "test": "jest",

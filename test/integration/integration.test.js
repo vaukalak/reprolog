@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import LoggerProvider from '../../lib/LoggerProvider';
-import log from '../../lib/hoc/log';
+import createLoggerHoc from '../../lib/hoc/createLoggerHoc';
 
 const unitTestLogger = () => {
   const logHistory = [];
@@ -16,7 +16,7 @@ const unitTestLogger = () => {
   };
 };
 
-const testLog = log({});
+const testLog = createLoggerHoc({});
 
 describe('integration', () => {
   describe('simple flow', () => {
