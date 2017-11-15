@@ -38,7 +38,9 @@ jobs:
           name: deploy to npm
           command: |
             echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-            yarn publish
+            LAST_TAG=$(git describe --abbrev=0 --tag)
+            yarn publish --new-version $LAST_TAG.$(( $(git rev-list $LAST_TAG.. --count)+1 ))
+            git push --follow-tags
 
 workflows:
   version: 2
@@ -49,8 +51,6 @@ workflows:
           requires:
             - test
           filters:
-            tags:
-              only: /v.*/
             branches:
               only:
                 - master
