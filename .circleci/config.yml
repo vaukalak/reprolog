@@ -21,48 +21,48 @@ jobs:
 
       - run: yarn test
       - run: yarn run lint
-  build:
-    docker:
-      - image: circleci/node:7.10
+  #build:
+  #  docker:
+  #    - image: circleci/node:7.10
 
-    steps:
-      - checkout
+  #  steps:
+  #    - checkout
 
-      - run:
-          name: install dependencies
-          command: 'yarn'
-      - run:
-          name: build module
-          command: yarn run build
-      - run:
-          name: clean up git
-          command: |
-            git status
-            git reset --hard
-      - run:
-          name: deploy to npm
-          command: |
-            git config --global user.email "lahmataja.pa4vara@gmail.com"
-            git config --global user.name "vaukalak"
-            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-            npm version patch
-            npm publish --no-tag
-      - run:
-          name: push tag to gh
-          command: |
-            COMMIT_MESSAGE="v$(git log -1 --pretty="%s") [skip ci]"
-            git commit --amend -m "$COMMIT_MESSAGE"
-            git push --set-upstream origin ${CIRCLE_BRANCH} --follow-tags
+  #    - run:
+  #        name: install dependencies
+  #        command: 'yarn'
+  #    - run:
+  #        name: build module
+  #        command: yarn run build
+  #    - run:
+  #        name: clean up git
+  #        command: |
+  #          git status
+  #          git reset --hard
+  #    - run:
+  #        name: deploy to npm
+  #        command: |
+  #          git config --global user.email "lahmataja.pa4vara@gmail.com"
+  #          git config --global user.name "vaukalak"
+  #          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+  #          npm version patch
+  #          npm publish --no-tag
+  #    - run:
+  #        name: push tag to gh
+  #        command: |
+  #          COMMIT_MESSAGE="v$(git log -1 --pretty="%s") [skip ci]"
+  #          git commit --amend -m "$COMMIT_MESSAGE"
+  #          git push --set-upstream origin ${CIRCLE_BRANCH} --follow-tags
 
 workflows:
   version: 2
   test_and_deploy:
     jobs:
       - test
-      - build:
-          requires:
-            - test
-          filters:
-            tags:
-              only:
-                - master
+      #- build:
+      #    requires:
+      #      - test
+      #    filters:
+      #      tags:
+      #        only:
+      #          - master
