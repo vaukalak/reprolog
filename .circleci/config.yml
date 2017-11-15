@@ -40,7 +40,9 @@ jobs:
             echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
             npm version patch
             npm publish --no-tag
-
+        - run:
+          name: push tag to gh
+          command: |
             git push --set-upstream origin ${CIRCLE_BRANCH}
             git config --global user.email "lahmataja.pa4vara@gmail.com"
             git config --global user.name "vaukalak"
