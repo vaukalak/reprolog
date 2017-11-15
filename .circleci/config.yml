@@ -30,9 +30,7 @@ jobs:
 
       - run:
           name: install dependencies
-          command: |
-            yarn -v
-            yarn
+          command: 'yarn'
       - run:
           name: build module
           command: yarn run build
@@ -54,7 +52,7 @@ jobs:
           command: |
             COMMIT_MESSAGE="v$(git log -1 --pretty="%s") [skip ci]"
             git commit --amend -m "$COMMIT_MESSAGE"
-            git push --follow-tags
+            git push --set-upstream origin ${CIRCLE_BRANCH} --follow-tags
 
 workflows:
   version: 2
