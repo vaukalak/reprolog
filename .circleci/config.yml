@@ -35,12 +35,17 @@ jobs:
           name: build module
           command: yarn run build
       - run:
+          name: clean up git
+          command: |
+            git status
+            git reset --hard
+      - run:
           name: deploy to npm
           command: |
             echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
             npm version patch
             npm publish --no-tag
-        - run:
+      - run:
           name: push tag to gh
           command: |
             git push --set-upstream origin ${CIRCLE_BRANCH}
