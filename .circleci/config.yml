@@ -38,7 +38,15 @@ jobs:
           name: deploy to npm
           command: |
             echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-            npm publish
+            npm version patch
+            npm publish --no-tag
+
+            git push --set-upstream origin ${CIRCLE_BRANCH}
+            git config --global user.email "lahmataja.pa4vara@gmail.com"
+            git config --global user.name "vaukalak"
+            COMMIT_MESSAGE="v$(git log -1 --pretty="%s") [skip ci]"
+            git commit --amend -m "$COMMIT_MESSAGE"
+            git push --follow-tags
 
 workflows:
   version: 2
@@ -49,6 +57,6 @@ workflows:
           requires:
             - test
           filters:
-            branches:
+            tags:
               only:
                 - master
