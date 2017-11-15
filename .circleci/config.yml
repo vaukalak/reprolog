@@ -30,7 +30,9 @@ jobs:
 
       - run:
           name: install dependencies
-          command: 'yarn'
+          command: |
+            yarn -v
+            yarn
       - run:
           name: build module
           command: yarn run build
@@ -42,15 +44,14 @@ jobs:
       - run:
           name: deploy to npm
           command: |
+            git config --global user.email "lahmataja.pa4vara@gmail.com"
+            git config --global user.name "vaukalak"
             echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
             npm version patch
             npm publish --no-tag
       - run:
           name: push tag to gh
           command: |
-            git push --set-upstream origin ${CIRCLE_BRANCH}
-            git config --global user.email "lahmataja.pa4vara@gmail.com"
-            git config --global user.name "vaukalak"
             COMMIT_MESSAGE="v$(git log -1 --pretty="%s") [skip ci]"
             git commit --amend -m "$COMMIT_MESSAGE"
             git push --follow-tags
