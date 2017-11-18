@@ -8,6 +8,11 @@
     "logger",
     "log"
   ],
+  "files": [
+    "dist",
+    "lib",
+    "test"
+  ],
   "main": "dist/index.js",
   "author": "vaukalak",
   "bugs": {
