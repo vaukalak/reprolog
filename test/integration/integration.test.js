@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import LoggerProvider from '../../lib/LoggerProvider';
-import createLoggerHoc from '../../lib/hoc/createLoggerHoc';
+import withLogger from '../../lib/hoc/withLogger';
 
 const unitTestLogger = () => {
   const logHistory = [];
@@ -16,15 +16,13 @@ const unitTestLogger = () => {
   };
 };
 
-const testLog = createLoggerHoc({});
-
 describe('integration', () => {
   describe('simple flow', () => {
     const logger = unitTestLogger();
     const A = ({ foo }) => null;
-    const WrappedA = testLog()(A);
+    const WrappedA = withLogger()(A);
     const Component = ({ foo }) => (
-      <LoggerProvider propsLogger={logger}>
+      <LoggerProvider propsLogger={logger} propsLoggerConfig={{ }}>
         <WrappedA foo={foo} />
       </LoggerProvider>
     );
@@ -50,9 +48,9 @@ describe('integration', () => {
   describe('display name', () => {
     const logger = unitTestLogger();
     const A = () => null;
-    const WrappedA = testLog('CustomName')(A);
+    const WrappedA = withLogger('CustomName')(A);
     const Component = ({ foo }) => (
-      <LoggerProvider propsLogger={logger}>
+      <LoggerProvider propsLogger={logger} propsLoggerConfig={{ }}>
         <WrappedA foo={foo} />
       </LoggerProvider>
     );
@@ -63,6 +61,34 @@ describe('integration', () => {
         name: 'CustomName',
         props: { },
       });
+    });
+  });
+
+  describe('whitelist', () => {
+    const logger = unitTestLogger();
+    const config = {
+      whiteList: ['B'],
+    };
+    const A = () => null;
+    const B = () => null;
+    const WrappedA = withLogger()(A);
+    const WrappedB = withLogger()(B);
+    const Component = ({ foo }) => (
+      <LoggerProvider
+        propsLogger={logger}
+        propsLoggerConfig={config}
+      >
+        <WrappedA foo={foo} />
+        <WrappedB foo={foo} />
+      </LoggerProvider>
+    );
+    mount(<Component foo={5} />);
+    it('should filter by whiteList', () => {
+      expect(logger.getLog()).toEqual([{
+        type: 'init',
+        name: 'B',
+        props: { foo: 5 },
+      }]);
     });
   });
 });

@@ -21,8 +21,8 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "eslint test lib",
+    "lint:fix": "npm run lint -- --fix",
     "build": "npx babel lib --out-dir dist"
   },
   "jest": {
