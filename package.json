@@ -1,6 +1,6 @@
 {
   "name": "reprolog",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "bin": "./lib",
   "description": "react property logger",
   "keywords": [
