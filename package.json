@@ -8,7 +8,7 @@
     "logger",
     "log"
   ],
-  "main": "index.js",
+  "main": "dist/index.js",
   "author": "vaukalak",
   "bugs": {
     "url": "https://github.com/vaukalak/reprolog/issues",
