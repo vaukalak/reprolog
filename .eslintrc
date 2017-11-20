@@ -23,6 +23,7 @@
     "import/prefer-default-export": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
     "no-mixed-operators": "off",
-    "react/no-typos": "off"
+    "react/no-typos": "off",
+    "no-prototype-builtins": "off"
   }
 }
