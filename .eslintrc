@@ -7,7 +7,8 @@
     "jest": true,
     "expect": true,
     "describe": true,
-    "it": true
+    "it": true,
+    "beforeEach": true
   },
   "plugins": [],
   "extends": "airbnb",
