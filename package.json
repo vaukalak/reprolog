@@ -1,6 +1,6 @@
 {
   "name": "reprolog",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "bin": "./lib",
   "description": "react property logger",
   "keywords": [
@@ -11,7 +11,9 @@
   "files": [
     "dist",
     "lib",
-    "test"
+    "test",
+    "outputs",
+    "loggers"
   ],
   "main": "dist/index.js",
   "author": "vaukalak",
