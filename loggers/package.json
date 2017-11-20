@@ -1,5 +1,0 @@
-{
-  "name": "reprolog/loggers",
-  "private": true,
-  "main": "../dist/loggers/index.js"
-}
