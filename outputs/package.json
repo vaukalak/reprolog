@@ -1,0 +1,5 @@
+{
+  "name": "reprolog/outputs",
+  "private": true,
+  "main": "../dist/outputs/index.js"
+}
