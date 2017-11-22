@@ -1,6 +1,6 @@
-## React Property Logger
+# React Property Logger
 
-###Install
+##Install
 
 ```
 npm i -S reprolog
@@ -10,7 +10,7 @@ or
 yarn add reprolog
 ```
 
-###Setup
+##Setup
 
 ```
 import React from 'react';
@@ -29,7 +29,7 @@ export default () => (
 );
 ```
 
-###Usage
+##Usage
 
 ```
 // Root.js
@@ -47,17 +47,17 @@ export default withLogger()(Root);
 This is the name with which component will appear in the log. By default it
 value is taken from the component display name. 
 
-###Configuration
+##Configuration
 
 With a high probability you do not need logs from all your components in the same time.
 To enable logs that you need to display, just modify `whiteList` param of config passed to logger provider.
 
-###Performance
+##Performance
 
 On production environment `withLogger` behaves as identity function, and logs are off.
 For that reason it has zero performance impact on production environment.
 
-###Loggers and outputs
+##Loggers and outputs
 
 Loggers are responsible to format and data to display. Right now there `newPropsLogger` 
 (displays only new properties on each update) and `newDiffPropsLogger`
