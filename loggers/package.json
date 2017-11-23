@@ -1,5 +1,5 @@
 {
-  "name": "reprolog/outputs",
+  "name": "reprolog/loggers",
   "private": true,
   "main": "../dist/loggers/index.js"
 }

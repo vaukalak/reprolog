@@ -1,6 +1,6 @@
 {
   "name": "reprolog",
-  "version": "0.1.11",
+  "version": "0.2.0",
   "bin": "./lib",
   "description": "react property logger",
   "keywords": [
@@ -28,7 +28,7 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "lint": "eslint test lib",
+    "lint": "eslint test lib examples/src",
     "lint:fix": "npm run lint -- --fix",
     "prepublishOnly": "npm run build",
     "build": "npx babel lib --out-dir dist"

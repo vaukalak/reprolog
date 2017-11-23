@@ -5,7 +5,7 @@ describe('newDiffPropsLogger', () => {
     const a = { foo: 1, baz: 2 };
 
     newDiffPropsLogger({
-      logInit: (name, groups) => {
+      out: (operation, name, groups) => {
         expect(name).toEqual('temp');
         expect(groups).toEqual([{ name: 'initial props', value: a }]);
       },
@@ -15,7 +15,7 @@ describe('newDiffPropsLogger', () => {
   it('should output all diffs correctly', () => {
     const a = { foo: 2, bar: 1 };
     newDiffPropsLogger({
-      logUpdate: (name, groups) => {
+      out: (operation, name, groups) => {
         expect(name).toEqual('temp');
         expect(groups).toEqual([
           { name: 'new props', value: a },
@@ -30,7 +30,7 @@ describe('newDiffPropsLogger', () => {
   it('should not consider `undefined` as deletion', () => {
     const a = { baz: undefined };
     newDiffPropsLogger({
-      logUpdate: (name, groups) => {
+      out: (operation, name, groups) => {
         expect(name).toEqual('temp');
         expect(groups).toEqual([
           { name: 'new props', value: a },
