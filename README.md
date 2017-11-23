@@ -2,6 +2,7 @@
 
 Configurable logger for all property changes of your componets.
 
+![](https://github.com/vaukalak/reprolog/blob/master/ezgif-3-836c024d83.gif?raw=true)
 
 ## Install
 
@@ -18,13 +19,13 @@ yarn add reprolog
 ```
 import React from 'react';
 import { LoggerProvider } from 'reprolog';
-import { newDiffPropsLogger } from 'reprolog/loggers';
+import { newOldDiffLogger } from 'reprolog/loggers';
 import { consoleTableOutput } from 'reprolog/outputs';
 import Root from './Root';
 
 export default () => (
     <LoggerProvider
-      propsLogger={newDiffPropsLogger(consoleTableOutput())}
+      propsLogger={newOldDiffLogger(consoleTableOutput())}
       propsLoggerConfig={{ whiteList: ['Root'] }}
     >
         <Root />
@@ -62,9 +63,11 @@ For that reason it has zero performance impact on production environment.
 
 ## Loggers and outputs
 
-Loggers are responsible to format and data to display. Right now there `newPropsLogger` 
-(displays only new properties on each update) and `newDiffPropsLogger`
-(displays new deteled, added properties and properties diff on each update).
+Loggers are responsible to format and data to display. Right now there:
+
+`newOldDiffLogger` - displays new, old properties, and property diff on each update.
+`newPropsLogger` - displays only new properties on each update.
+`newDiffPropsLogger` - displays new deteled, added properties and properties diff on each update.
 
 Outputs display data provided by loggers. Right now there `consoleOutput` which logs
 data as plain console object. And `consoleTableOutput` which displays data in a table layout
