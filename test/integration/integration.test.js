@@ -2,19 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import LoggerProvider from '../../lib/LoggerProvider';
 import withLogger from '../../lib/hoc/withLogger';
-
-const unitTestLogger = () => {
-  const logHistory = [];
-  return {
-    logInit: (name, props) => {
-      logHistory.push({ type: 'init', name, props });
-    },
-    logUpdate: (name, props) => {
-      logHistory.push({ type: 'update', name, props });
-    },
-    getLog: () => [...logHistory],
-  };
-};
+import unitTestLogger from '../../lib/loggers/unitTestLogger';
 
 describe('integration', () => {
   describe('simple flow', () => {
