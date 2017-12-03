@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { compose, withState } from 'recompose';
 import { withLogger } from 'reprolog';
+import Display from './Display';
+import Button from './Button';
 
 const Counter = ({ count, setCount }) => (
-  <button
-    onClick={() => { setCount(count + 1); }}
-  >
-    Count: {count}
-  </button>
+  <div>
+    <Display count={count} />
+    <Button onClick={() => { setCount(count + 1); }} />
+  </div>
 );
 
 Counter.propTypes = {

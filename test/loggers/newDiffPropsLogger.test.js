@@ -9,7 +9,7 @@ describe('newDiffPropsLogger', () => {
         expect(name).toEqual('temp');
         expect(groups).toEqual([{ name: 'initial props', value: a }]);
       },
-    }).logInit('temp', a);
+    }).logInit('temp', 'key', a);
   });
 
   it('should output all diffs correctly', () => {
@@ -24,7 +24,7 @@ describe('newDiffPropsLogger', () => {
           { name: 'changes', value: { foo: 2 } },
         ]);
       },
-    }).logUpdate('temp', a);
+    }).logUpdate('temp', 'key', a);
   });
 
   it('should not consider `undefined` as deletion', () => {
@@ -39,6 +39,6 @@ describe('newDiffPropsLogger', () => {
           { name: 'changes', value: { baz: undefined } },
         ]);
       },
-    }).logUpdate('temp', a);
+    }).logUpdate('temp', 'key', a);
   });
 });

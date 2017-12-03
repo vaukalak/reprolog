@@ -9,7 +9,7 @@ describe('newPropsLogger', () => {
         expect(name).toEqual('temp');
         expect(groups).toEqual([{ name: 'initial props', value: a }]);
       },
-    }).logInit('temp', a);
+    }).logInit('temp', 'key', a);
   });
 
   it('should output update props correctly', () => {
@@ -19,6 +19,6 @@ describe('newPropsLogger', () => {
         expect(name).toEqual('temp');
         expect(groups).toEqual([{ name: 'new props', value: a }]);
       },
-    }).logUpdate('temp', a);
+    }).logUpdate('temp', 'key', a);
   });
 });
