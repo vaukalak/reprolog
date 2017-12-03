@@ -1995,9 +1995,9 @@ repeating@^2.0.0:
   dependencies:
     is-finite "^1.0.0"
 
-reprolog@^0.1.11:
-  version "0.1.11"
-  resolved "https://registry.npmjs.org/reprolog/-/reprolog-0.1.11.tgz#972e8e8b881784fe0eab18052861a02dbfb00f07"
+reprolog@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.npmjs.org/reprolog/-/reprolog-0.3.0.tgz#fb84a213d1c099260f72d89c4ec7f1d47df264cc"
   dependencies:
     prop-types "^15.6.0"
     react "^16.1.0"
