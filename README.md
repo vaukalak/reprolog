@@ -56,6 +56,38 @@ value is taken from the component display name.
 With a high probability you do not need logs from all your components in the same time.
 To enable logs that you need to display, just modify `whiteList` param of config passed to logger provider.
 
+## Runtime Configuration
+
+You can configure logger, for runtime updates from chrome console:
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import { LoggerProvider } from 'reprolog';
+import { newOldDiffLogger } from 'reprolog/loggers';
+import { consoleTableOutput } from 'reprolog/outputs';
+import { ConsoleRuntimeConfig } from 'reprolog/config';
+
+import Counter from './Counter';
+
+const config = new ConsoleRuntimeConfig({ whiteList: ['Counter'] });
+
+const Root = () => (
+  <LoggerProvider
+    propsLogger={newOldDiffLogger(consoleTableOutput())}
+    propsLoggerConfig={config}
+  >
+    <Counter />
+  </LoggerProvider>
+);
+```
+
+This will expose a gobal `reprolog` object, that can be called from chrome console, with 2 methods:
+### updateWhiteList(whiteList, save);
+Changes logging whiteList to the firt parameter. The second mentions whether update should be saved in local storage. I case `save` is true, updated config will be also used after app refresh.
+### dropCache
+Remove updates saved to local storage.
+
 ## Performance
 
 On production environment `withLogger` behaves as identity function, and logs are off.
